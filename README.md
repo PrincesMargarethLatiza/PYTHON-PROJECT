@@ -2,7 +2,7 @@
 
 # Overview
 
-This Shop Management System is a Python-based application that uses Tkinter for the graphical user interface (GUI) and MySQL for data storage. It provides functionalities for customers to view items and place orders, and for administrators to manage items and view orders.
+This Shop Ordering System is a Python-based application that uses Tkinter for the graphical user interface (GUI) and MySQL for data storage. It provides functionalities for customers to view items and place orders, and for administrators to manage items and view orders.
 
 # Features
 
