@@ -47,7 +47,7 @@ def admin_login(username, password, success_callback):
 
 
 def customer_menu(root, items, previous_menu):
-    # Clear previous widgets
+    
     for widget in root.winfo_children():
         widget.destroy()
 
@@ -75,7 +75,7 @@ def save_item(name, price, item_type, items, current_menu, previous_menu, root):
 
 
 def delete_item(root, items, current_menu, previous_menu):
-    # Clear previous widgets
+    
     for widget in root.winfo_children():
         widget.destroy()
 
@@ -107,7 +107,7 @@ def perform_delete(item_id, items, current_menu, previous_menu, root):
         messagebox.showerror("Database Error", f"Failed to delete item: {e}")
     
 def add_item(root, items, current_menu, previous_menu):
-    # Clear previous widgets
+    
     for widget in root.winfo_children():
         widget.destroy()
 
@@ -132,7 +132,7 @@ def add_item(root, items, current_menu, previous_menu):
 
 
 def view_orders(root, items, current_menu, previous_menu):
-    # Clear previous widgets
+    
     for widget in root.winfo_children():
         widget.destroy()
 
@@ -160,11 +160,11 @@ def view_orders(root, items, current_menu, previous_menu):
         if not fetched_orders:
             tk.Label(root, text="No orders yet.", font=("Helvetica", 16), bg='#8B4513', fg="white").pack(pady=10)
         else:
-            # Create Treeview
+            
             tree = ttk.Treeview(root, columns=("Order ID", "Customer Name", "Phone", "Order Type", "Item", "Quantity", "Price", "Item Total"), show="headings", height=15)
             tree.pack(fill="both", expand=True, pady=10, padx=10)
 
-            # Define column headings
+            
             columns = {
                 "Order ID": 100, 
                 "Customer Name": 150, 
@@ -199,7 +199,7 @@ def view_orders(root, items, current_menu, previous_menu):
                 })
                 grouped_orders[row["order_id"]]["order_total"] += row["item_total"]
 
-            # Populate Treeview
+            
             for order_id, order_data in grouped_orders.items():
                 customer_info = (
                     order_id, 
@@ -256,12 +256,12 @@ def view_orders(root, items, current_menu, previous_menu):
     finally:
         connection.close()
 
-    # Back button to return to the admin menu
+    
     tk.Button(root, text="Back", width=25, height=2, font=("Helvetica", 16), bg='#D2B48C', command=lambda: current_menu(root, items, previous_menu)).pack(pady=10)
 
 
 def admin_menu(root, items, previous_menu):
-    # Clear previous widgets
+    
     for widget in root.winfo_children():
         widget.destroy()
 
@@ -274,20 +274,20 @@ def admin_menu(root, items, previous_menu):
 
 
 def show_menu(root, items, current_menu, previous_menu):
-    # Clear previous widgets
+    
     for widget in root.winfo_children():
         widget.destroy()
 
     tk.Label(root, text="Menu", font=("Helvetica", 20), bg='#8B4513', fg="white").pack(pady=15)
     
-    if not items:  # If no items exist, show a message
+    if not items:  
         tk.Label(root, text="No items available", font=("Helvetica", 16), bg='#8B4513', fg="white").pack(pady=5)
     else:
         for item in items:
             # Display each item with id, name, and price
             tk.Label(root, text=f"{item['id']}. {item['name']} - ${item['price']}", font=("Helvetica", 16), bg='#8B4513', fg="white").pack(pady=5)
     
-    # Button to go back to the previous menu
+    
     tk.Button(root, text="Back", width=25, height=2, font=("Helvetica", 16), bg='#D2B48C', command=lambda: current_menu(root, items, previous_menu)).pack(pady=15)
 
 
@@ -296,7 +296,7 @@ orders = []
 
 
 def order_items(root, items, current_menu, previous_menu):
-    # Clear previous widgets
+    
     for widget in root.winfo_children():
         widget.destroy()
 
@@ -396,7 +396,7 @@ def order_items(root, items, current_menu, previous_menu):
             connection.commit()
 
             messagebox.showinfo("Order Successful", f"Order placed successfully! Order ID: {order_id}")
-            # Go back to the previous menu or clear the form
+        
             current_menu(root, items, previous_menu)
 
         except mysql.connector.Error as e:
@@ -408,7 +408,7 @@ def order_items(root, items, current_menu, previous_menu):
     submit_button = tk.Button(root, text="Place Order", font=("Helvetica", 16), bg='#D2B48C', command=submit_order)
     submit_button.pack(pady=10)
 
-    # Back button to return to the previous menu
+
     back_button = tk.Button(root, text="Back", font=("Helvetica", 16), bg='#D2B48C', command=lambda: current_menu(root, items, previous_menu))
     back_button.pack(pady=10)
 
@@ -439,7 +439,7 @@ def order_items(root, items, current_menu, previous_menu):
 
 
 def admin_dashboard(root):
-    # Clear previous widgets
+    
     for widget in root.winfo_children():
         widget.destroy()
 
@@ -453,12 +453,12 @@ def admin_dashboard(root):
     else:
         tk.Label(root, text="No orders yet.", font=("Helvetica", 16), bg='#8B4513', fg="white").pack(pady=5)
 
-    # Back to admin menu button
+    
     tk.Button(root, text="Back", width=25, height=2, font=("Helvetica", 16), bg='#D2B48C', command=lambda: admin_menu(root, [], None)).pack(pady=15)
 
 
 def main_menu(root, items):
-    # Clear previous widgets
+    
     for widget in root.winfo_children():
         widget.destroy()
 
@@ -476,7 +476,7 @@ def login_window(root, items):
         password = password_entry.get()
         admin_login(username, password, lambda: admin_menu(root, items, None))
 
-    # Clear previous widgets
+    
     for widget in root.winfo_children():
         widget.destroy()
 
@@ -493,13 +493,13 @@ def login_window(root, items):
 
 
 def main():
-    # Create Tkinter window
+    
     root = tk.Tk()
     root.geometry("600x700")
     root.configure(bg='#8B4513')
     root.title("Keyki Shop")
 
-    # Start with the main menu
+    
     main_menu(root, load_items())
 
     root.mainloop()
