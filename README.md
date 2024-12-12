@@ -63,7 +63,7 @@ CREATE TABLE items (
     type varchar(100)
 );
 
-CREATE TABLE orders (
+CREATE TABLE order_items (
     id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT,
     item_id INT,
