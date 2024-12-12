@@ -32,9 +32,9 @@ This Shop Ordering System is a Python-based application that uses Tkinter for th
 
 # Prerequisites
 
-* Python 3.7 or above
+1 Python 3.7 or above
 
-* MySQL Database Server
+2 MySQL Database Server
 
 # Required Python libraries:
 
