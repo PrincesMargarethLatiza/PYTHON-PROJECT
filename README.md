@@ -24,6 +24,8 @@ This Shop Ordering System is a Python-based application that uses Tkinter for th
 
 * View all items in the menu.
 
+* View all customer orders.
+
 # Manage Orders:
 
 * View all customer orders.
